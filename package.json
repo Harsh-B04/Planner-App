@@ -1,0 +1,16 @@
+{
+  "name": "planner",
+  "private": true,
+  "scripts": {
+    "db:local": "wrangler d1 migrations apply planner-db --local -c wrangler.test.toml",
+    "db:remote": "wrangler d1 migrations apply planner-db --remote",
+    "dev": "wrangler dev",
+    "dev:local": "wrangler dev -c wrangler.test.toml",
+    "deploy": "wrangler deploy",
+    "test": "node test/planner.test.mjs && node test/ai.test.mjs && node test/api.test.mjs && node test/extract.test.mjs && node test/plan.test.mjs && node test/push.test.mjs && node test/private.test.mjs && node test/feed.test.mjs && node test/habits.test.mjs",
+    "vapid": "node scripts/vapid.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

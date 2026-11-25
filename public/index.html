@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Planner · a journal that plans your week</title>
+  <meta name="description" content="Write like a journal and Planner turns it into sessions on your calendar: big plans split into small ones, suggested times that learn your habits, streaks, exams and reminders. Try the demo, no sign-up.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://planner.balajiharshw12.workers.dev/">
+  <meta property="og:title" content="Planner · a journal that plans your week">
+  <meta property="og:description" content="Write what you want to do. It puts it on your calendar, splits big plans into sessions and suggests when to do them. Try the demo, no sign-up.">
+  <meta property="og:image" content="https://planner.balajiharshw12.workers.dev/shots/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0F1115">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="top" hidden>
+    <button class="brand" data-go="today" aria-label="Planner, go to Today"><svg class="logo" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10" fill="none" stroke="#2A2F38" stroke-width="3.5"/><path d="M13 3A10 10 0 0 1 22.5 16" fill="none" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round"/></svg><span>Planner</span></button>
+    <nav class="tabs" aria-label="Main">
+      <button data-view="today" class="tab active" aria-label="Today"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg><span>Today</span></button>
+      <button data-view="journal" class="tab" aria-label="Journal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg><span>Journal</span></button>
+      <button data-view="plan" class="tab" aria-label="Plan"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Plan</span></button>
+      <button data-view="calendar" class="tab" aria-label="Calendar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Calendar</span></button>
+      <button data-view="log" class="tab" aria-label="Week"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M11 20V5M17 20v-6M3 20h18"/></svg><span>Week</span></button>
+    </nav>
+    <div class="top-right">
+      <span id="status" class="pill" title="" role="button" tabindex="0"></span>
+      <button class="avatar" id="avatar" data-go="settings" aria-label="Settings"><span id="avatar-letter">·</span><i class="sync-dot" aria-hidden="true"></i></button>
+    </div>
+  </header>
+  <button class="fab" id="fab" data-go="write" aria-label="Write a journal entry" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
+
+  <main>
+    <!-- Login / sign-up -->
+    <section id="view-auth" class="view" hidden>
+      <div class="land">
+        <header class="land-top">
+          <span class="land-brand"><svg class="auth-logo" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10" fill="none" stroke="#2A2F38" stroke-width="3.5"/><path d="M13 3A10 10 0 0 1 22.5 16" fill="none" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round"/></svg>Planner</span>
+          <a class="land-login" href="#signin">Log in</a>
+        </header>
+
+        <section class="land-hero">
+          <div class="land-copy">
+            <p class="lbl">Journal · planner · calendar</p>
+            <h1>Write like a journal.<br>It plans your week.</h1>
+            <p class="land-sub">Tell it what you did and what you want to do. It turns your words into sessions on your calendar, splits big plans into small ones, and suggests when to do each one.</p>
+            <div class="land-cta"><button class="primary" type="button" data-demo="start">Try the demo</button><a class="btn" href="#signin">Log in</a></div>
+            <p class="small muted">The demo runs in your browser with a week of sample data. No sign-up, nothing is saved to a server.</p>
+          </div>
+          <figure class="land-shot land-shot-hero"><img src="/shots/today.webp" width="393" height="852" alt="The Today screen: a clock dial showing the day's study sessions, with the next one starting soon"></figure>
+        </section>
+
+        <section class="land-feats" aria-label="What it does">
+          <article class="feat">
+            <div class="feat-copy"><p class="lbl">01 · Journal to calendar</p><h2>Write it once. It's on your calendar.</h2>
+              <p>"Gym twice a week at 6 pm" or "thermo revision tomorrow at 10". Clear plans go straight onto your calendar, and "I finished the lab report" ticks the task off. Vague plans ask first.</p></div>
+            <figure class="land-shot"><img src="/shots/journal.webp" width="393" height="720" loading="lazy" alt="Journal entries with the plans the app found in them"></figure>
+          </article>
+          <article class="feat">
+            <div class="feat-copy"><p class="lbl">02 · Big plans, small sessions</p><h2>Breaks a big plan into chunks.</h2>
+              <p>"4 cycles in the next 4 days, about an hour each" becomes one session per cycle, in order, cut to your session length with breaks. Link it to an exam and it adds a revision session the evening before.</p></div>
+            <figure class="land-shot"><img src="/shots/plan.webp" width="393" height="720" loading="lazy" alt="The Plan screen with today's sessions and the week's load"></figure>
+          </article>
+          <article class="feat">
+            <div class="feat-copy"><p class="lbl">03 · Suggested times</p><h2>Picks a time, and learns yours.</h2>
+              <p>Every task gets a suggested time inside your working hours, around college and your days off. At first the AI picks most of it from what you write. As you finish sessions, your own habits take over.</p></div>
+            <figure class="land-shot"><img src="/shots/calendar.webp" width="393" height="720" loading="lazy" alt="The Calendar screen with the sessions for one day"></figure>
+          </article>
+          <article class="feat">
+            <div class="feat-copy"><p class="lbl">04 · Habits, exams, reminders</p><h2>Keeps the rest of your life in it too.</h2>
+              <p>Streaks for habits like the gym, countdowns to exams, and birthdays that remind you on the day. It works offline on your phone and laptop and syncs between them.</p></div>
+            <figure class="land-shot"><img src="/shots/habits.webp" width="393" height="720" loading="lazy" alt="Habits on the Today screen: a water count and a gym streak, with tick marks for the last days"></figure>
+          </article>
+        </section>
+
+        <section class="land-signin" id="signin" aria-label="Log in">
+          <div class="card auth">
+        <h2 id="auth-title">Log in</h2>
+        <p class="muted">Log in to your planner, or create an account with an invite code.</p>
+        <form id="auth-form">
+          <label>Username <input name="username" autocomplete="username" required></label>
+          <label>Password <input name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters"></label>
+          <label id="invite-row" hidden>Invite code <input name="invite" class="mono" autocomplete="off" placeholder="From the person who invited you"></label>
+          <button class="primary" type="submit" id="auth-submit">Log in</button>
+          <p class="error" id="auth-error" role="alert"></p>
+        </form>
+        <button class="link" id="auth-toggle" type="button">New here? Create an account</button>
+      </div>
+          <p class="small muted land-or">No account? <button class="link" type="button" data-demo="start">Try the demo instead</button></p>
+        </section>
+
+        <footer class="land-foot"><span>Planner · made by Karthik</span><span class="mono">Cloudflare Workers · D1 · Gemini · works offline</span></footer>
+      </div>
+    </section>
+
+    <!-- Today -->
+    <section id="view-today" class="view" hidden>
+      <div class="today">
+        <div class="t-left">
+          <div class="today-head"><p class="lbl" id="today-kicker"></p><h1 id="today-date"></h1></div>
+          <div class="t-stats" id="today-sum"></div>
+          <div class="t-week" id="today-week"></div>
+          <div class="ex-strip" id="exams-strip" hidden></div>
+          <div class="card checklist no-demo" id="checklist" hidden></div>
+        </div>
+        <div class="t-center">
+          <div id="today-dial"></div>
+          <div class="focus" id="today-focus"></div>
+        </div>
+        <div class="t-right">
+          <div class="card todo" id="todo" hidden></div>
+          <div id="today-next" class="next" hidden></div>
+          <div id="today-list"></div>
+          <div id="today-earlier"></div>
+          <div id="today-habits" class="today-habits" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plan -->
+    <section id="view-plan" class="view" hidden>
+      <div class="view-head p-head">
+        <div><p class="lbl" id="p-kicker">Your tasks</p><h1>Plan</h1></div>
+        <form id="quick-add" class="quick-add"><label class="sr" for="quick-title">New task</label><input id="quick-title" maxlength="120" placeholder="Add a task, e.g. Revise chapter 3" autocomplete="off"><button type="submit" class="icon-btn" aria-label="Add task"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></form>
+      </div>
+      <div class="split">
+      <div class="main">
+      <div class="card" id="goal-card"></div>
+      <div class="card" id="journal-tasks" hidden></div>
+      <div id="task-list"></div>
+      </div>
+      <aside class="side"><div class="card" id="proposal-card"></div></aside>
+      </div>
+    </section>
+
+    <!-- Journal -->
+    <section id="view-journal" class="view" hidden>
+      <div class="view-head j-head">
+        <div><p class="lbl" id="j-kicker">Your journal</p><h1>Journal</h1></div>
+        <button class="icon-btn" id="j-search-btn" aria-label="Search or ask your journal" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></button>
+      </div>
+      <div class="card vault-banner" id="vault-banner" hidden></div>
+      <div class="card composer" id="composer-card">
+        <textarea id="composer" rows="2" placeholder="How's the day going?"></textarea>
+        <div class="composer-row">
+          <div class="energy" role="group" aria-label="Energy (optional)">
+            <span class="muted small">Energy</span>
+            <button type="button" data-energy="1">Low</button>
+            <button type="button" data-energy="2">Okay</button>
+            <button type="button" data-energy="3">High</button>
+          </div>
+          <button type="button" class="mic" id="mic" aria-label="Speak your entry" aria-pressed="false" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+          <button class="primary" id="save-entry">Save</button>
+        </div>
+        <p class="mono hint">#tags · Ctrl ⏎ to save · N new entry · 1–5 switch tabs</p>
+      </div>
+
+      <div class="tagf-row" id="tag-filter" role="group" aria-label="Filter by tag"></div>
+      <div class="journal-tools">
+      <button class="strip" id="confirm-strip" hidden></button>
+      <div class="strip warn" id="ai-note" hidden>
+        <span></span>
+        <button class="link" id="ai-note-settings">Settings</button>
+        <button class="link" id="ai-note-dismiss">Dismiss</button>
+      </div>
+
+      <div class="search-row">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+        <input id="search" type="search" placeholder="Search, #tags, or ask a question" aria-label="Search entries, #tags, or ask a question">
+        <button class="link" id="clear-search" hidden>Clear</button>
+        <button class="ask-btn" id="ask-btn" type="button">Ask</button>
+      </div>
+      <div class="card ask-card" id="ask-card" role="status" hidden></div>
+      <section class="card j-stats" id="j-stats" hidden></section>
+      </div>
+
+      <div id="entries"></div>
+      <p class="muted empty" id="empty" hidden>Nothing here yet. Write a line about your day above.</p>
+    </section>
+
+    <!-- Calendar -->
+    <section id="view-calendar" class="view" hidden>
+      <div class="split cal-split">
+      <div class="main">
+      <div class="view-head cal-head">
+        <div><p class="lbl" id="cal-kicker"></p><h1 id="cal-title"></h1></div>
+        <div class="cal-nav">
+          <button data-cal="prev" class="sq" aria-label="Previous month"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button data-cal="today" id="cal-today">Today</button>
+          <button data-cal="next" class="sq" aria-label="Next month"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          <button class="bare week-review" data-go="log">Week review →</button>
+        </div>
+      </div>
+      <div class="cal-week" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend mono">
+        <span><svg viewBox="0 0 18 18" width="14" height="14" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="#2A2F38" stroke-width="2.5"/><circle cx="9" cy="9" r="7" fill="none" stroke="#5CC8A6" stroke-width="2.5" stroke-dasharray="30 44" transform="rotate(-90 9 9)"/></svg>done of plan</span>
+        <span><i class="dot-p"></i><i class="dot-p"></i>planned</span>
+        <span><i class="dot-r"></i>repeating</span>
+        <span><i class="dot-j"></i>journal</span>
+        <span><span class="due-tag">due</span>deadline</span>
+        <span><span class="due-tag exam">exam</span>exam</span>
+      </div>
+      </div>
+      <aside class="side"><div class="card cal-day" id="cal-day"></div></aside>
+      </div>
+    </section>
+
+    <!-- Log: what you confirmed -->
+    <section id="view-log" class="view" hidden>
+      <div class="view-head"><div><button class="bare back-link" data-go="today">← Today</button><p class="lbl" id="log-kicker">This week</p><h1>Week</h1></div></div>
+      <div class="card" id="review"></div>
+      <div class="card">
+        <h2>From your journal <span class="muted small">last 7 days</span></h2>
+        <div id="week"></div>
+      </div>
+      <div class="card">
+        <h2>Coming up</h2>
+        <ul id="plans" class="prefs"></ul>
+      </div>
+      <div id="log"></div>
+      <section class="card subj-card" id="subj-card" hidden></section>
+    </section>
+
+    <!-- Settings -->
+    <section id="view-settings" class="view" hidden>
+      <div class="view-head"><div><p class="lbl" id="set-kicker">Settings</p><h1>Settings</h1></div></div>
+      <div class="card">
+        <h2>My week</h2>
+        <p class="muted small">When you can work. The planner only puts tasks inside these hours.</p>
+        <div id="routine"></div>
+      </div>
+
+      <div class="card">
+        <h2>Exams <span class="muted small">optional</span></h2>
+        <div id="exams"></div>
+      </div>
+
+      <div class="card no-demo">
+        <h2>Notifications</h2>
+        <div id="notify"></div>
+      </div>
+
+      <div class="card no-demo">
+        <h2>Calendar apps</h2>
+        <div id="callink"></div>
+      </div>
+
+      <div class="card no-demo">
+        <h2>Private journal</h2>
+        <div id="vault"></div>
+      </div>
+
+      <div class="card">
+        <h2>Things to know about me</h2>
+        <p class="muted small">The planner will follow these when it builds your plans. Nothing gets added here without you.</p>
+        <ul id="prefs" class="prefs"></ul>
+        <form id="pref-form" class="inline">
+          <input id="pref-input" maxlength="500" placeholder="e.g. I don't like working on Fridays">
+          <button class="primary" type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="card no-demo">
+        <h2>AI</h2>
+        <p class="small muted" id="ai-blend"></p>
+        <p class="muted small">Each person picks their own AI. Your key is stored encrypted on the server and only used for your own requests.</p>
+        <p class="muted small">Once an AI is set, it reads each new entry and shows what it noted underneath. Nothing counts until you confirm it.</p>
+        <form id="ai-form">
+          <label>Service
+            <select id="ai-provider"><option value="">None yet</option></select>
+          </label>
+          <label id="ai-preset-row" hidden>Provider
+            <select id="ai-preset"></select>
+          </label>
+          <label id="ai-base-row" hidden>Base URL <input id="ai-base" placeholder="https://…"></label>
+          <label id="ai-model-row">Model <input id="ai-model" autocomplete="off"></label>
+          <label id="ai-key-row">API key <input id="ai-key" type="password" autocomplete="off"></label>
+          <div class="row">
+            <button class="primary" type="submit">Save</button>
+            <button type="button" id="ai-test">Test connection</button>
+          </div>
+          <p class="small" id="ai-msg" role="status"></p>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>App</h2>
+        <div class="row">
+          <button id="install" hidden>Install app</button>
+          <button id="sync-now">Sync now</button>
+        </div>
+        <p class="muted small" id="install-hint"></p>
+      </div>
+
+      <div class="card no-demo">
+        <h2>Your data</h2>
+        <p class="muted small">Logged in as <b id="who"></b>.</p>
+        <div class="row">
+          <button id="export">Download everything</button>
+          <button id="logout">Log out</button>
+        </div>
+        <details class="danger-zone">
+          <summary>Delete account</summary>
+          <p class="small">Deletes your account, journal and settings from the server. This can't be undone. Download your data first if you want a copy.</p>
+          <form id="delete-form" class="inline">
+            <input type="password" id="delete-pass" placeholder="Your password" autocomplete="current-password" required>
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Something shared from another app -->
+  <div id="share-sheet" class="sheet" hidden>
+    <div class="card sheet-card">
+      <h2>Save to Planner</h2>
+      <textarea id="share-text" rows="5"></textarea>
+      <div class="row">
+        <button class="primary" data-share="journal">Save to journal</button>
+        <button data-share="task">Add as a task</button>
+        <button data-share="cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script src="/planner-core.js"></script>
+  <script src="/app.js"></script>
+  <script src="/plan.js"></script>
+  <script src="/notify.js"></script>
+  <script src="/calendar.js"></script>
+  <script src="/vault.js"></script>
+  <script src="/extras.js"></script>
+  <script src="/more.js"></script>
+  <script src="/demo.js"></script>
+</body>
+</html>

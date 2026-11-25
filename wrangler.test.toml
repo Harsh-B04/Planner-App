@@ -1,0 +1,31 @@
+# Copy of wrangler.toml without the [ai] part, for testing on your own machine without logging in to Cloudflare.
+name = "planner"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "planner-db"
+database_id = "PASTE-YOUR-DATABASE-ID-HERE"
+migrations_dir = "migrations"
+
+[vars]
+# Most AI calls one person can make per day. Protects your bill and the shared free allowance.
+AI_DAILY_LIMIT = "150"
+# Shown to push services as the contact for this app. Put your own email here.
+VAPID_SUBJECT = "mailto:you@example.com"
+
+# Checks for reminders every 5 minutes.
+[triggers]
+crons = ["*/5 * * * *"]
+
+# Secrets (never put them in this file):
+#   npx wrangler secret put INVITE_CODE         -> the code friends type to sign up
+#   npx wrangler secret put KEY_SECRET          -> long random text used to encrypt saved AI keys. Never change it.
+#   npx wrangler secret put VAPID_PRIVATE_JWK   -> key for notifications; make it with: node scripts/vapid.mjs
+# For local testing both are read from the .dev.vars file.
+
