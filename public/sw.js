@@ -1,6 +1,6 @@
 // Keeps the app opening when offline. Always tries the network first so updates show up,
 // and falls back to the saved copy. API calls are never cached.
-const CACHE = 'planner-shell-v34';
+const CACHE = 'planner-shell-v36';
 const SHELL = ['/', '/index.html', '/app.css', '/app.js', '/planner-core.js', '/plan.js', '/notify.js', '/calendar.js', '/vault.js', '/extras.js', '/more.js', '/demo.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {

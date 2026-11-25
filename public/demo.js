@@ -112,15 +112,15 @@ function seedDemo() {
     exam_id: thermo.id, per: 60, parts_n: 4, revision: true, date: today });
 
   // Gym twice a week (a habit with weekly streaks) and a birthday reminder.
-  const e2 = entry(0, H(7.6), 'Gym twice a week at 6 pm. Also remind me of Riya\'s birthday tomorrow.', 2);
+  const e2 = entry(0, H(7.6), 'Gym twice a week at 6 pm. Also remind me of Dad\'s birthday tomorrow.', 2);
   const gym = task({ title: 'Gym', category: 'exercise', repeat: JSON.stringify({ days: [], per_week: 2, time: '18:00' }), est_minutes: 60, entry_id: e2,
     habit: JSON.stringify({ changes: [{ from: day(-27), kind: 'flex', days: [], per_week: 2, count: 1, unit: '' }], paused: [] }) });
   for (const n of [-2, -6, -8, -13, -15, -20, -22]) { put('habit_logs', fresh({ task_id: gym.id, date: day(n), amount: 1 })); block(gym, day(n), H(18), 60, 'done'); }
   block(gym, day(2), H(18), 60);
-  const bday = task({ title: "Riya's birthday", category: 'reminder', est_minutes: 15, deadline: day(1), priority: 1, entry_id: e2 });
+  const bday = task({ title: "Dad's birthday", category: 'reminder', est_minutes: 15, deadline: day(1), priority: 1, entry_id: e2 });
   block(bday, day(1), H(8), 15);
   obs(e2, 'intention', { task: 'Gym', category: 'exercise', repeat: { days: [], per_week: 2, time: '18:00' }, task_id: gym.id });
-  obs(e2, 'intention', { task: "Riya's birthday", category: 'reminder', date: day(1), time: '08:00', task_id: bday.id });
+  obs(e2, 'intention', { task: "Dad's birthday", category: 'reminder', date: day(1), time: '08:00', task_id: bday.id });
 
   // Water: a daily count habit.
   const water = task({ title: 'Water', category: 'other', est_minutes: 5,
